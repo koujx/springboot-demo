@@ -1,15 +1,34 @@
 package com.kou.entity;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable {
+    /**
+     * id
+     */
     private Integer id;
 
+    /**
+     * 姓名
+     */
     private String name;
 
+    /**
+     * 性别
+     */
     private String sex;
 
+    /**
+     * 年龄
+     */
     private Integer age;
 
+    /**
+     * 电话
+     */
     private String phone;
+
+    private static final long serialVersionUID = 1L;
 
     public Integer getId() {
         return id;
@@ -49,5 +68,20 @@ public class User {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(getClass().getSimpleName());
+        sb.append(" [");
+        sb.append("Hash = ").append(hashCode());
+        sb.append(", id=").append(id);
+        sb.append(", name=").append(name);
+        sb.append(", sex=").append(sex);
+        sb.append(", age=").append(age);
+        sb.append(", phone=").append(phone);
+        sb.append("]");
+        return sb.toString();
     }
 }

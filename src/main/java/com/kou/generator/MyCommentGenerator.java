@@ -4,7 +4,9 @@ import org.mybatis.generator.api.CommentGenerator;
 import org.mybatis.generator.api.IntrospectedColumn;
 import org.mybatis.generator.api.IntrospectedTable;
 import org.mybatis.generator.api.dom.java.*;
+import org.mybatis.generator.api.dom.xml.TextElement;
 import org.mybatis.generator.api.dom.xml.XmlElement;
+import org.mybatis.generator.internal.util.StringUtility;
 
 import java.util.Properties;
 
@@ -12,6 +14,9 @@ import java.util.Properties;
  * Created by KouJiaxing on 2017-9-5.
  */
 public class MyCommentGenerator implements CommentGenerator {
+    public MyCommentGenerator() {
+    }
+
     @Override
     public void addConfigurationProperties(Properties properties) {
 
@@ -19,7 +24,20 @@ public class MyCommentGenerator implements CommentGenerator {
 
     @Override
     public void addFieldComment(Field field, IntrospectedTable introspectedTable, IntrospectedColumn introspectedColumn) {
+        if (StringUtility.stringHasValue(introspectedColumn.getRemarks())) {
+            field.addJavaDocLine("/**");
+            String remark = introspectedColumn.getRemarks();
+            String[] remarks = remark.split("\r\n");
+            String[] var6 = remarks;
+            int var7 = remarks.length;
 
+            for (int var8 = 0; var8 < var7; ++var8) {
+                String s = var6[var8];
+                field.addJavaDocLine(" * " + s);
+            }
+
+            field.addJavaDocLine(" */");
+        }
     }
 
     @Override
@@ -38,7 +56,7 @@ public class MyCommentGenerator implements CommentGenerator {
     }
 
     @Override
-    public void addClassComment(InnerClass innerClass, IntrospectedTable introspectedTable, boolean b) {
+    public void addClassComment(InnerClass innerClass, IntrospectedTable introspectedTable, boolean markAsDoNotDelete) {
 
     }
 
@@ -69,11 +87,11 @@ public class MyCommentGenerator implements CommentGenerator {
 
     @Override
     public void addComment(XmlElement xmlElement) {
-
+        xmlElement.addElement(new TextElement("<!-- WARNING - @mbg.generated -->"));
     }
 
     @Override
-    public void addRootComment(XmlElement xmlElement) {
+    public void addRootComment(XmlElement rootElement) {
 
     }
 }

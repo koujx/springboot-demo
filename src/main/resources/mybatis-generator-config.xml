@@ -6,11 +6,30 @@
     <properties resource="application.properties"/>
 
     <!--指定特定数据库的jdbc驱动jar包 -->
-    <classPathEntry location="${spring.datasource.driver-location}"/>
+    <!--<classPathEntry location="${spring.datasource.driver-location}"/>-->
 
     <context id="default" defaultModelType="flat" targetRuntime="MyBatis3">
 
-        <commentGenerator>
+        <!-- 生成的Java文件的编码 -->
+        <property name="javaFileEncoding" value="UTF-8"/>
+        <!-- 格式化java代码 -->
+        <property name="javaFormatter" value="org.mybatis.generator.api.dom.DefaultJavaFormatter"/>
+        <!-- 格式化XML代码 -->
+        <property name="xmlFormatter" value="org.mybatis.generator.api.dom.DefaultXmlFormatter"/>
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+        <!-- 增加Models ToStirng方法 -->
+        <plugin type="org.mybatis.generator.plugins.ToStringPlugin" />
+        <!-- 增加爱Models Serializable实现 -->
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin" />
+        <!-- 分页插件 -->
+        <!-- 在example类中增 page 属性，并在mapper.xml的查询中加入page !=null 时的查询 -->
+        <!-- <plugin type="org.mybatis.generator.plugins.MySQLPagerPlugin" /> -->
+        <!-- 在example类中增 offset和limit属性，并在mapper.xml的查询中加入limit ${offset} , ${limit} 提供在offset和limit>0时的查询 -->
+        <!--<plugin type="org.mybatis.generator.plugins.MySQLPaginationPlugin2"></plugin>-->
+        <!--<plugin type="com.xxg.mybatis.plugins.MySQLLimitPlugin"></plugin>-->
+
+        <commentGenerator type="com.kou.generator.MyCommentGenerator">
             <property name="suppressAllComments" value="true"/>
             <property name="suppressDate" value="false"/>
         </commentGenerator>
