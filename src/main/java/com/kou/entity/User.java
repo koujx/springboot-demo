@@ -11,7 +11,7 @@ public class User implements Serializable {
     /**
      * 姓名
      */
-    private String name;
+    private String username;
 
     /**
      * 性别
@@ -38,12 +38,12 @@ public class User implements Serializable {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getSex() {
@@ -77,7 +77,7 @@ public class User implements Serializable {
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
-        sb.append(", name=").append(name);
+        sb.append(", username=").append(username);
         sb.append(", sex=").append(sex);
         sb.append(", age=").append(age);
         sb.append(", phone=").append(phone);

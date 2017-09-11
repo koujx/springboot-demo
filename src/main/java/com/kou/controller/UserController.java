@@ -18,6 +18,7 @@ public class UserController {
 
     @GetMapping("/list")
     public Object userList() {
-        return userMapper.selectByPrimaryKey(1);
+        //return userMapper.selectByPrimaryKey(1);
+        return userMapper.selectByCondition();
     }
 }

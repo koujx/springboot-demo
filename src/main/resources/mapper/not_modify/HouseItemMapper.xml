@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kou.dao.HouseItemMapper">
+  <resultMap id="BaseResultMap" type="com.kou.entity.HouseItem">
+    <!-- WARNING - @mbg.generated -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="detail_url" jdbcType="VARCHAR" property="detailUrl" />
+    <result column="house_code" jdbcType="CHAR" property="houseCode" />
+    <result column="image_url" jdbcType="VARCHAR" property="imageUrl" />
+    <result column="display_name" jdbcType="VARCHAR" property="displayName" />
+    <result column="house_info" jdbcType="VARCHAR" property="houseInfo" />
+    <result column="house_position_info" jdbcType="VARCHAR" property="housePositionInfo" />
+    <result column="follow_info" jdbcType="VARCHAR" property="followInfo" />
+    <result column="tag" jdbcType="VARCHAR" property="tag" />
+    <result column="total_price" jdbcType="VARCHAR" property="totalPrice" />
+    <result column="unit_price" jdbcType="VARCHAR" property="unitPrice" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!-- WARNING - @mbg.generated -->
+    id, detail_url, house_code, image_url, display_name, house_info, house_position_info, 
+    follow_info, tag, total_price, unit_price
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!-- WARNING - @mbg.generated -->
+    select 
+    <include refid="Base_Column_List" />
+    from house_item
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!-- WARNING - @mbg.generated -->
+    delete from house_item
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.kou.entity.HouseItem">
+    <!-- WARNING - @mbg.generated -->
+    insert into house_item (id, detail_url, house_code, 
+      image_url, display_name, house_info, 
+      house_position_info, follow_info, tag, 
+      total_price, unit_price)
+    values (#{id,jdbcType=INTEGER}, #{detailUrl,jdbcType=VARCHAR}, #{houseCode,jdbcType=CHAR}, 
+      #{imageUrl,jdbcType=VARCHAR}, #{displayName,jdbcType=VARCHAR}, #{houseInfo,jdbcType=VARCHAR}, 
+      #{housePositionInfo,jdbcType=VARCHAR}, #{followInfo,jdbcType=VARCHAR}, #{tag,jdbcType=VARCHAR}, 
+      #{totalPrice,jdbcType=VARCHAR}, #{unitPrice,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.kou.entity.HouseItem">
+    <!-- WARNING - @mbg.generated -->
+    insert into house_item
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="detailUrl != null">
+        detail_url,
+      </if>
+      <if test="houseCode != null">
+        house_code,
+      </if>
+      <if test="imageUrl != null">
+        image_url,
+      </if>
+      <if test="displayName != null">
+        display_name,
+      </if>
+      <if test="houseInfo != null">
+        house_info,
+      </if>
+      <if test="housePositionInfo != null">
+        house_position_info,
+      </if>
+      <if test="followInfo != null">
+        follow_info,
+      </if>
+      <if test="tag != null">
+        tag,
+      </if>
+      <if test="totalPrice != null">
+        total_price,
+      </if>
+      <if test="unitPrice != null">
+        unit_price,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="detailUrl != null">
+        #{detailUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="houseCode != null">
+        #{houseCode,jdbcType=CHAR},
+      </if>
+      <if test="imageUrl != null">
+        #{imageUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="displayName != null">
+        #{displayName,jdbcType=VARCHAR},
+      </if>
+      <if test="houseInfo != null">
+        #{houseInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="housePositionInfo != null">
+        #{housePositionInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="followInfo != null">
+        #{followInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="tag != null">
+        #{tag,jdbcType=VARCHAR},
+      </if>
+      <if test="totalPrice != null">
+        #{totalPrice,jdbcType=VARCHAR},
+      </if>
+      <if test="unitPrice != null">
+        #{unitPrice,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kou.entity.HouseItem">
+    <!-- WARNING - @mbg.generated -->
+    update house_item
+    <set>
+      <if test="detailUrl != null">
+        detail_url = #{detailUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="houseCode != null">
+        house_code = #{houseCode,jdbcType=CHAR},
+      </if>
+      <if test="imageUrl != null">
+        image_url = #{imageUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="displayName != null">
+        display_name = #{displayName,jdbcType=VARCHAR},
+      </if>
+      <if test="houseInfo != null">
+        house_info = #{houseInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="housePositionInfo != null">
+        house_position_info = #{housePositionInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="followInfo != null">
+        follow_info = #{followInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="tag != null">
+        tag = #{tag,jdbcType=VARCHAR},
+      </if>
+      <if test="totalPrice != null">
+        total_price = #{totalPrice,jdbcType=VARCHAR},
+      </if>
+      <if test="unitPrice != null">
+        unit_price = #{unitPrice,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kou.entity.HouseItem">
+    <!-- WARNING - @mbg.generated -->
+    update house_item
+    set detail_url = #{detailUrl,jdbcType=VARCHAR},
+      house_code = #{houseCode,jdbcType=CHAR},
+      image_url = #{imageUrl,jdbcType=VARCHAR},
+      display_name = #{displayName,jdbcType=VARCHAR},
+      house_info = #{houseInfo,jdbcType=VARCHAR},
+      house_position_info = #{housePositionInfo,jdbcType=VARCHAR},
+      follow_info = #{followInfo,jdbcType=VARCHAR},
+      tag = #{tag,jdbcType=VARCHAR},
+      total_price = #{totalPrice,jdbcType=VARCHAR},
+      unit_price = #{unitPrice,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

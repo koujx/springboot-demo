@@ -46,7 +46,7 @@
 
         <javaClientGenerator targetPackage="com.kou.dao" targetProject="src/main/java" type="XMLMAPPER"/>
 
-        <table tableName="user"
+        <table tableName="house_item"
                enableCountByExample="false"
                enableDeleteByExample="false"
                enableSelectByExample="false"

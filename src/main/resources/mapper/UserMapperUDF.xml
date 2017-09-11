@@ -3,10 +3,10 @@
 <mapper namespace="com.kou.dao.UserMapper">
 
     <sql id="Base_Column_List_UDF">
-        id, name, sex, age, phone
+        id, username, sex, age, phone
     </sql>
 
-    <select id="selectByCondition" parameterType="map" resultType="com.kou.entity.User">
+    <select id="selectByCondition" parameterType="map" resultMap="BaseResultMap">
         SELECT
         <include refid="Base_Column_List_UDF"/>
         FROM user
